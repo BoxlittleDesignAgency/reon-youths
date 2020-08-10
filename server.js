@@ -7,7 +7,7 @@ const path = require('path');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
+const expressJwt = require('express-jwt');
 const expressValidator = require('express-validator');
 
 const dotenv = require('dotenv').config();
@@ -40,16 +40,16 @@ const siteRoutes = require('./routes/api/site');
 //   res.send('ping pong');
 // });
 
-// app.use(
-//   '/api',
-//   expressJwt({
-//     credentialsRequired: true,
-//     secret: process.env.JWT_SECRET,
-//     requestProperty: 'user',
-//     userProperty: 'user',
-//     algorithms: ['HS256']
-//   })
-// );
+app.use(
+  'api',
+  expressJwt({
+    credentialsRequired: true,
+    secret: process.env.JWT_SECRET,
+    requestProperty: 'user',
+    userProperty: 'user',
+    algorithms: ['HS256']
+  })
+);
 
 // apiDocs
 app.get('/api', (req, res) => {

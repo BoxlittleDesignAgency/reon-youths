@@ -12,10 +12,10 @@
   "scripts": {
     "start": "node server.js",
     "start-watch": "nodemon server.js",
-    "client-install": "cd client && yarn install",
+    "client-install": "cd client && npm install",
     "install-client": "cd client && npm install",
-    "client": "cd client && yarn start",
-    "build": "cd client && yarn run build",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
     "dev": "concurrently \"yarn run start\" \"yarn run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false  npm run install-client && npm run build"
   },

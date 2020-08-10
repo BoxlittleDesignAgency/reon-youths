@@ -1,0 +1,28 @@
+<svg
+              version="1.1"
+              id="slider_bg"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 360 360"
+              enable-background="new 0 0 260 260"
+              xml:space="preserve"
+            >
+              <defs>
+                <clipPath id="svg-draw">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    fill="#0511F2"
+                    d="M253.4,63.3c12.7,21.4-0.4,47.9-1.4,72.8 c-1.1,27.2,10.3,56.9-4.7,79.7c-15.5,23.7-45.1,35.5-73.2,39c-26.8,3.3-51-11-76.3-20.4c-27.4-10.2-59.6-13.3-77.3-36.6 C2.1,173.4-2.2,140,3.3,109.9c5.3-28.8,24.3-52.9,46.5-72C70,20.5,95.1,9.4,121.7,7.8c24.1-1.4,45,12.4,67.3,21.8 C211.9,39.3,240.8,41.9,253.4,63.3z"
+                  />
+                </clipPath>
+              </defs>
+              <image
+                clip-path="url(#svg-draw)"
+                height="100%"
+                width="100%"
+                xlink:href="http://placekitten.com/600/600"
+              />
+            </svg>

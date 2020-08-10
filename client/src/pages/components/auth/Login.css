@@ -1,0 +1,20 @@
+#login-masthead {
+  padding-top: 10rem;
+}
+
+#login-masthead p {
+  margin-left: 2rem;
+  color: var(--primary-2);
+  font-size: 1.625rem;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.1rem;
+}
+
+.all-links {
+  color: var(--site-secondary);
+  font-weight: 400;
+}
+.user-login {
+  margin-top: 34px;
+}

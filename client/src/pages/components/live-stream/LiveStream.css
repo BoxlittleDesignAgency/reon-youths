@@ -1,0 +1,166 @@
+.livestream-comp {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.lst-small-txt {
+  font-size: 1rem;
+  height: 24px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.lst-block-ext {
+  position: relative;
+  margin-top: 0.7rem;
+  font-weight: 700;
+}
+
+.lst-big-txt {
+  font-size: 5rem;
+  line-height: 5.6rem;
+  height: 70px;
+  position: relative;
+}
+
+.lst-big-txt::before {
+  position: absolute;
+  content: '';
+  bottom: 0px;
+  left: 42%;
+  width: 6rem;
+  height: 0.4rem;
+  margin-left: -3rem;
+  background-color: rgb(9, 17, 20);
+}
+
+.lst-body-txt {
+  max-width: 60%;
+  padding-top: 70px;
+  margin: 0 auto;
+}
+
+.lst-body-txt p {
+  font-size: 1.625rem;
+  line-height: 26px;
+}
+
+.lst-evan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lst-middle {
+  text-align: center;
+}
+
+.lst-video {
+  margin-top: 120px;
+}
+
+.lst-row-bleed {
+  position: relative;
+  display: block;
+}
+
+.lst-row-bleed-inner {
+  position: relative;
+  display: grid;
+  
+}
+
+.grped-middle {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 100%;
+}
+
+.video-field {
+  height: 559px;
+  padding: 0;
+}
+
+.video-field {
+  position: relative;
+  width: 100%;
+  max-width: 994px;
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 12px;
+  background: url('../../../assets/images/company-video.jpg') no-repeat center
+    center;
+  background-size: contain;
+  -webkit-box-shadow: 0 0 45px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 45px 5px rgba(0, 0, 0, 0.15);
+}
+
+img,
+video,
+audio,
+object,
+embed {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+.lst-summary {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lst-column {
+  flex-basis: 32.3%;
+  width: 32.33%;
+  margin: 0 0 1.5rem;
+  padding: 0 25px;
+}
+
+.lst-column h3 {
+  margin: 1rem 0 0;
+  color: rgb(9, 17, 20);
+}
+
+.lst-column h3 {
+  font-size: 1.825rem;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase;
+}
+
+.lst-column:nth-child(1) {
+  text-align: right;
+}
+
+.lst-column:nth-child(2) {
+  text-align: center;
+}
+
+.lst-column:nth-child(3) {
+  text-align: left;
+}
+
+.lst-ad {
+  display: block;
+  padding: 50px 0;
+  margin-top: 30px;
+}
+
+.lst-ad-mid-h4 {
+  font-size: 3.3rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.lst-ad-bottom {
+  text-align: center;
+}

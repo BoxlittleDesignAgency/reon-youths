@@ -1,0 +1,16 @@
+#register-masthead {
+  padding-top: 10rem;
+}
+
+#register-masthead p {
+  margin-left: 2rem;
+  color: var(--primary-2);
+  font-size: 1.625rem;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.1rem;
+}
+
+.user-register {
+  margin-top: 34px;
+}

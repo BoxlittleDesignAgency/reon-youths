@@ -1,6 +1,6 @@
 import React, { Fragment, lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import { debugContextDevtool } from 'react-context-devtool';
+
 
 const App = lazy(() => import('./App'));
 

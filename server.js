@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 const expressJwt = require('express-jwt');
 const expressValidator = require('express-validator');
 
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 8081;
@@ -39,16 +39,15 @@ const siteRoutes = require('./routes/api/site');
 // app.get('/ping', (req, res) => {
 //   res.send('ping pong');
 // });
-
+const myFilter = function (req) {
+  return true;
+};
 app.use(
   'api',
   expressJwt({
-    credentialsRequired: true,
     secret: process.env.JWT_SECRET,
-    requestProperty: 'user',
-    userProperty: 'user',
     algorithms: ['HS256']
-  })
+  }).unless(myFilter)
 );
 
 // apiDocs
@@ -76,7 +75,7 @@ app.use('/api', siteRoutes);
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
-  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static(path.join(__dirname, '/client/build')));
 
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));

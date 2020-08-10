@@ -7,7 +7,7 @@ const path = require('path');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const expressJwt = require('express-jwt');
+
 const expressValidator = require('express-validator');
 
 require('dotenv').config();
@@ -40,16 +40,17 @@ const siteRoutes = require('./routes/api/site');
 //   res.send('ping pong');
 // });
 
-const myFilter = function (req) {
-  return true;
-};
-app.use(
-  'api',
-  expressJwt({
-    secret: process.env.JWT_SECRET,
-    algorithms: ['HS256']
-  }).unless(myFilter)
-);
+// const myFilter = function (req) {
+//   return true;
+// };
+
+// app.use(
+//   'api',
+//   expressJwt({
+//     secret: process.env.JWT_SECRET,
+//     algorithms: ['HS256']
+//   }).unless(myFilter)
+// );
 
 // apiDocs
 app.get('/api', (req, res) => {

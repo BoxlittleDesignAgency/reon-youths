@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
+const expressJwt = require('express-jwt');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -28,6 +29,14 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use(
+  expressJwt({
+    credentialsRequired: true,
+    secret: process.env.JWT_SECRET,
+    requestProperty: 'user',
+    userProperty: 'user'
+  })
+);
 //bring in routes
 const authRoutes = require('./routes/api/auth');
 const userRoutes = require('./routes/api/user');
@@ -71,7 +80,6 @@ if (process.env.NODE_ENV === 'production') {
     // res.end();
   });
 }
-
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {

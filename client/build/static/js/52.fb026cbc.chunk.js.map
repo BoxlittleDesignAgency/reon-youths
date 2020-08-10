@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/videos/video-01.mp4"],"names":["module","exports"],"mappings":"sFAAAA,EAAOC,QAAU,IAA0B","file":"static/js/52.fb026cbc.chunk.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/media/video-01.7c04c86a.mp4\";"],"sourceRoot":""}

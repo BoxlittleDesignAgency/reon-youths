@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/fonts/HKGrotesk-Medium.woff"],"names":["module","exports"],"mappings":"sFAAAA,EAAOC,QAAU,IAA0B","file":"static/js/38.ad2734b9.chunk.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/media/HKGrotesk-Medium.9cd2d2ac.woff\";"],"sourceRoot":""}

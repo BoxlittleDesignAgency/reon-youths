@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/images/cropped-big.jpg"],"names":["module","exports"],"mappings":"sFAAAA,EAAOC,QAAU,IAA0B","file":"static/js/64.71b15489.chunk.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/media/cropped-big.9717032a.jpg\";"],"sourceRoot":""}

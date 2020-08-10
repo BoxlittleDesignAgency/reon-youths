@@ -1,0 +1,2 @@
+(this.webpackJsonpclient=this.webpackJsonpclient||[]).push([[67],{120:function(n,p,s){n.exports=s.p+"static/media/nathana-reboucas-b0-Kp69nXOo-unsplash.0fc96c37.jpg"}}]);
+//# sourceMappingURL=67.29f914f7.chunk.js.map

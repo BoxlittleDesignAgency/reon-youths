@@ -1,0 +1,2 @@
+(this.webpackJsonpclient=this.webpackJsonpclient||[]).push([[35],{220:function(t,c,e){t.exports=e.p+"static/media/HKGrotesk-LightLegacy.f7cc095d.woff"}}]);
+//# sourceMappingURL=35.3875d6e8.chunk.js.map

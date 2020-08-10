@@ -15,7 +15,7 @@
     "client": "npm run start --prefix client",
     "build": "npm run build --prefix client",
     "dev": "concurrently \"yarn run start\" \"yarn run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm install npm && npm run install-client && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && npm run install-client && npm run build"
   },
   "keywords": [
     "node",

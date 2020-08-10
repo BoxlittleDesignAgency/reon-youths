@@ -1,0 +1,1 @@
+{"version":3,"sources":["dashboard/components/Family.js"],"names":["Family"],"mappings":"kGAAA,2BAIeA,UAFA,kBAAM","file":"static/js/7.321e1a0e.chunk.js","sourcesContent":["import React from 'react';\n\nconst Family = () => <h2>Family</h2>;\n\nexport default Family;\n"],"sourceRoot":""}

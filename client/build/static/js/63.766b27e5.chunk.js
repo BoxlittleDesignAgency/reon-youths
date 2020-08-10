@@ -1,0 +1,2 @@
+(this.webpackJsonpclient=this.webpackJsonpclient||[]).push([[63],{234:function(e,p,t){e.exports=t.p+"static/media/cropped-big-texture-bg.ee41494b.jpg"}}]);
+//# sourceMappingURL=63.766b27e5.chunk.js.map

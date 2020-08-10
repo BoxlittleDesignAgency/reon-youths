@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/fonts/HKGrotesk-LightLegacy.woff"],"names":["module","exports"],"mappings":"sFAAAA,EAAOC,QAAU,IAA0B","file":"static/js/35.3875d6e8.chunk.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/media/HKGrotesk-LightLegacy.f7cc095d.woff\";"],"sourceRoot":""}

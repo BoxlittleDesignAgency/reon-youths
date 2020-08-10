@@ -46,7 +46,8 @@ const authenticateUserX = async (req, res, next) => {
 
 const requireSignin = expressJwt({
   secret: process.env.JWT_SECRET,
-  userProperty: 'user'
+  userProperty: 'user',
+  algorithms: ['HS256']
 });
 
 const hasAuthorization = (req, res, next) => {

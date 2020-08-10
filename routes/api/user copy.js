@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const {
-  // requireSignin,
+  requireSignin,
   authenticateUser,
   hasAuthorization,
   isAdmin,
@@ -29,15 +29,15 @@ router.route('/users').get(getUsers);
 router
   .route('/user/:userId')
   .get(authenticateUser, isAdmin, getUserById)
-  .put(isAuth, isAdmin, updateUser)
-  .delete(isAuth, deleteUser);
+  .put(requireSignin, isAdmin, updateUser)
+  .delete(requireSignin, deleteUser);
 
 // @route    PUT api/user/update
 // @desc     Update a single user
 // @access   Private
-router.route('/user/update').put(isAuth, update);
+router.route('/user/update').put(requireSignin, update);
 
-router.route('/secret/:userId').get(isAuth, (req, res) => {
+router.route('/secret/:userId').get(requireSignin, (req, res) => {
   res.json({
     user: req.profile
   });

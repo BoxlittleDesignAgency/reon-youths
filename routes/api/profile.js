@@ -26,7 +26,6 @@ const {
 const { userById } = require('../../controllers/user');
 const {
   authenticateUser,
-  requireSignin,
   isAdmin,
   isAdmin2,
   hasAuthorization

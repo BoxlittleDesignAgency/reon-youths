@@ -7,7 +7,6 @@ const { runValidation } = require('../../validator/index');
 
 
 const {
-  requireSignin,
   authenticateUser,
   isPostedBy,
 } = require('../../middleware');

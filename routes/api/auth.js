@@ -11,7 +11,7 @@ const {
 } = require('../../controllers/auth');
 
 //import the middlewares
-const { authenticateUser, requireSignin } = require('../../middleware');
+const { authenticateUser } = require('../../middleware');
 
 const {
   check,

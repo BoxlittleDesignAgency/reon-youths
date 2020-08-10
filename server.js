@@ -39,6 +39,7 @@ const siteRoutes = require('./routes/api/site');
 // app.get('/ping', (req, res) => {
 //   res.send('ping pong');
 // });
+
 const myFilter = function (req) {
   return true;
 };

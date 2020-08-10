@@ -11,12 +11,12 @@
   "author": "Demola Adebayo",
   "scripts": {
     "start": "nodemon server.js",
-    "client-install": "yarn install --prefix client",
-    "install-client": "yarn install --prefix client",
-    "client": "yarn start --prefix client",
-    "build": "yarn run build --prefix client",
+    "client-install": "cd client && yarn install",
+    "install-client": "cd client && yarn install",
+    "client": "cd client && yarn start",
+    "build": "cd client && yarn run build",
     "dev": "concurrently \"yarn run start\" \"yarn run client\"",
-    "heroku-postbuild": "YARN_PRODUCTION=false  yarn run install-client && yarn run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false  npm run install-client && npm run build"
   },
   "keywords": [
     "node",

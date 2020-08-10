@@ -4,10 +4,10 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const expressJwt = require('express-jwt');
+
 
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');const expressJwt = require('express-jwt');
 const expressValidator = require('express-validator');
 
 const dotenv = require('dotenv').config();
@@ -25,18 +25,11 @@ connectDBWithRetry();
 
 app.use(morgan('dev'));
 // app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.JWT_SECRET));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(
-  expressJwt({
-    credentialsRequired: true,
-    secret: process.env.JWT_SECRET,
-    requestProperty: 'user',
-    userProperty: 'user'
-  })
-);
+
 //bring in routes
 const authRoutes = require('./routes/api/auth');
 const userRoutes = require('./routes/api/user');
@@ -47,6 +40,15 @@ const siteRoutes = require('./routes/api/site');
 // app.get('/ping', (req, res) => {
 //   res.send('ping pong');
 // });
+
+app.use("/api",
+  expressJwt({
+    credentialsRequired: true,
+    secret: process.env.JWT_SECRET,
+    requestProperty: 'user',
+    userProperty: 'user'
+  })
+);
 
 // apiDocs
 app.get('/api', (req, res) => {

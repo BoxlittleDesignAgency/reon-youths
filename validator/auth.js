@@ -1,7 +1,7 @@
 const { check, body } = require('express-validator');
 
 const signupValidate = [
-  check('name', 'Name is required').notEmpty(),
+  check('name').not().isEmpty().withMessage('Name is required'),
   check('email', 'Please Enter a valid email').isEmail(),
   check('password', 'Enter a password')
     .notEmpty()

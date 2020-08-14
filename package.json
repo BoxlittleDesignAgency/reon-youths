@@ -16,7 +16,7 @@
     "install-client": "cd client && npm install",
     "client": "cd client && npm start",
     "build": "cd client && npm run build",
-    "dev": "concurrently \"yarn run start\" \"yarn run client\"",
+    "dev": "concurrently \"yarn run start-watch\" \"yarn run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false  npm run install-client && npm run build"
   },
   "keywords": [
@@ -25,6 +25,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@sendgrid/mail": "^7.2.3",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",

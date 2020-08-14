@@ -56,7 +56,7 @@ const Register = () => {
 
         const body = JSON.stringify(newUser);
         const res = await axios.post('/api/auth/signup', body, config);
-        console.log('RESULT:  ', res);
+        
         setFormData({
           ...formData,
           name: '',

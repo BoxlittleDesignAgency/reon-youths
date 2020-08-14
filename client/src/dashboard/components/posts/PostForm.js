@@ -26,7 +26,7 @@ const PostForm = () => {
     event.preventDefault();
     console.log('Submitted');
     addPost(formData);
-    setFormData('');
+    setFormData({ ...formData, title: '', text: '' });
   };
 
   return (

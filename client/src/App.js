@@ -39,6 +39,9 @@ const LiveStream = lazy(() =>
 const Contact = lazy(() => import('./pages/components/contact/Contact'));
 const Activate = lazy(() => import('./pages/components/auth/Activate'));
 
+const Forgot = lazy(() => import('./pages/components/auth/Forgot'));
+const Reset = lazy(() => import('./pages/components/auth/Reset'));
+
 const LoadingMessage = () => "I'm loading...";
 
 const PageTest = () => {
@@ -89,17 +92,30 @@ const App = () => {
               layout={MainLayout}
               component={Register}
             />
-            <AppRoute
-              exact
-              path="/auth/activate/:token"
-              layout={MainLayout}
-              component={Activate}
-            />
+            
             <AppRoute
               exact
               path="/navigation"
               layout={MainLayout}
               component={PageTest}
+            />
+            <AppRoute
+              exact
+              path="/auth/password/forgot"
+              layout={MainLayout}
+              component={Forgot}
+            />
+            <AppRoute
+              exact
+              path="/auth/password/reset/:token"
+              layout={MainLayout}
+              component={Reset}
+            />
+            <AppRoute
+              exact
+              path="/auth/activate/:token"
+              layout={MainLayout}
+              component={Activate}
             />
             <Route exact path="/test">
               <PageTest />

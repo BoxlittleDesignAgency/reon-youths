@@ -30,6 +30,10 @@ const UserSchema = new Schema({
     type: String,
     default: 'subscriber'
   },
+  resetPasswordLink: {
+    data: String,
+    default: ''
+  },
   updated: { type: Date, default: Date.now }
 });
 

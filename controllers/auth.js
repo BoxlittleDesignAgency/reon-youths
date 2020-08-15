@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const _ = require('lodash');
 
 //Load User Model
 const User = require('../models/User');
@@ -7,9 +8,7 @@ const User = require('../models/User');
 const sgMail = require('@sendgrid/mail');
 require('dotenv').config();
 
-sgMail.setApiKey(
-  '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'
-);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const signUp = (req, res) => {
   const { name, email, password } = req.body;
@@ -160,13 +159,91 @@ const forgotPassword = async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_RESET_PASSWORD, {
+    const token = jwt.sign({ _id: user._id, name: user.name }, process.env.JWT_RESET_PASSWORD, {
       expiresIn: '10m'
+    });
+
+    const emailData = {
+      from: process.env.EMAIL_FROM,
+      to: email,
+      subject: `REON Password Reset link`,
+      html: `
+                <h1>Please use the following link to reset your password</h1>
+                <p>${process.env.CLIENT_URL}/auth/password/reset/${token}</p>
+                <hr />
+                <p>This email may contain sensitive information</p>
+                <p>${process.env.CLIENT_URL}</p>
+            `
+    };
+
+    return user.updateOne({ resetPasswordLink: token }, (err, success) => {
+      if (err) {
+        console.log('RESET PASSWORD LINK ERROR', err);
+        return res.status(400).json({
+          error: 'Database connection error on user password forgot request'
+        });
+      } else {
+        sgMail
+          .send(emailData)
+          .then((sent) => {
+            // console.log('SIGNUP EMAIL SENT', sent)
+            return res.json({
+              message: `Email has been sent to ${email}. Follow the instruction to reset your password`
+            });
+          })
+          .catch((err) => {
+            // console.log('SIGNUP EMAIL SENT ERROR', err)
+            return res.json({
+              message: err.message
+            });
+          });
+      }
     });
   });
 };
 
-const resetPassword = async (req, res) => {};
+const resetPassword = async (req, res) => {
+  const { resetPasswordLink, newPassword } = req.body;
+
+  if (resetPasswordLink) {
+    jwt.verify(resetPasswordLink, process.env.JWT_RESET_PASSWORD, function (
+      err,
+      decoded
+    ) {
+      if (err) {
+        return res.status(400).json({
+          error: 'Expired link. Try again'
+        });
+      }
+
+      User.findOne({ resetPasswordLink }, (err, user) => {
+        if (err || !user) {
+          return res.status(400).json({
+            error: 'Something went wrong. Try later'
+          });
+        }
+
+        const updatedFields = {
+          password: newPassword,
+          resetPasswordLink: ''
+        };
+
+        user = _.extend(user, updatedFields);
+
+        user.save((err, result) => {
+          if (err) {
+            return res.status(400).json({
+              error: 'Error resetting user password'
+            });
+          }
+          res.json({
+            message: `Great! Now you can login with your new password`
+          });
+        });
+      });
+    });
+  }
+};
 
 const currentUser = async (req, res) => {
   // const user = await User.findById(req.user._id).select('-hashed_password');

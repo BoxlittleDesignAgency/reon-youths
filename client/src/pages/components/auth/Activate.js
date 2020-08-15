@@ -9,6 +9,8 @@ import { authenticate, isAuthenticated } from './helpers';
 
 import Log from '../../shared/Log';
 
+import './Login.css';
+
 const Activate = ({ history, match }) => {
   const [values, setValues] = useState({
     name: '',
@@ -68,18 +70,17 @@ const Activate = ({ history, match }) => {
         }}
       >
         <ToastContainer />
-        {isAuthenticated() ? <Redirect to="/dashboard" /> : null}
-        <section id="register-masthead" className="flex in-view">
+        <section id="login-masthead" className="flex in-view">
           <h1 className="title">Activate your Account</h1>
         </section>
-        <div className="user-register in-view">
-          {activationLink()}
+        <div className="user-login in-view">
+        {activationLink()}
 
           {/* <Log value={formData} /> */}
         </div>
       </div>
     </Fragment>
-  );
+   );
 };
 
 export default withRouter(Activate);

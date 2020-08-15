@@ -93,7 +93,7 @@ const Login = ({ history }) => {
           </div>
         </div>
         <h4 className="password-reset">
-          <a href="#/lost-password">Lost password?</a>
+          <Link to="/auth/password/forgot">Lost password?</Link>
         </h4>
       </fieldset>
       <fieldset className="login-submit-btn">

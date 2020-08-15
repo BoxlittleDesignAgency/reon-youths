@@ -3,95 +3,54 @@ const jwt = require('jsonwebtoken');
 //Load User Model
 const User = require('../models/User');
 
-//sendgrid
-const sgMail = require('@sendgrid/mail');
 require('dotenv').config();
 
-sgMail.setApiKey(
-  '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'
-);
-
-const signUp = (req, res) => {
+const signUp = async (req, res) => {
   const { name, email, password } = req.body;
 
-  User.findOne({ email }).exec((err, user) => {
+  try {
+    let user = await User.findOne({ email });
+
     if (user) {
-      return res.status(400).json({
-        error: 'Email is taken'
-      });
+      return res.status(403).json({ errors: [{ msg: 'Email is taken!' }] });
     }
 
-    const token = jwt.sign(
-      { name, email, password },
-      process.env.JWT_ACCOUNT_ACTIVATION,
-      { expiresIn: '10m' }
-    );
+    user = new User({
+      name,
+      email,
+      password
+    });
 
-    const emailData = {
-      from: process.env.EMAIL_FROM,
-      to: email,
-      subject: `REON Account activation link`,
-      html: `
-                <h1>Please use the following link to activate your account</h1>
-                <p>${process.env.CLIENT_URL}/auth/activate/${token}</p>
-                <hr />
-                <p>This email may contain sensitive information</p>
-                <p>${process.env.CLIENT_URL}</p>
-            `
-    };
-
-    sgMail
-      .send(emailData)
-      .then((sent) => {
-        // console.log('SIGNUP EMAIL SENT', sent)
-        return res.json({
-          message: `Email has been sent to ${email}. Follow the instruction to activate your REON account`
-        });
-      })
-      .catch((err) => {
-        // console.log('SIGNUP EMAIL SENT ERROR', err)
-        return res.json({
-          message: err.message
-        });
-      });
-  });
-};
-
-const accountActivation = (req, res) => {
-  const { token } = req.body;
-
-  if (token) {
-    jwt.verify(token, process.env.JWT_ACCOUNT_ACTIVATION, function (
-      err,
-      decoded
-    ) {
+    user.save((err, user) => {
       if (err) {
-        console.log('JWT VERIFY IN ACCOUNT ACTIVATION ERROR', err);
-        return res.status(401).json({
-          error: 'Expired link. Signup again'
-        });
+        return res
+          .status(401)
+          .json({ error: 'Error saving user in the database.' });
       }
 
-      const { name, email, password } = jwt.decode(token);
+      const payload = {
+        user: {
+          id: user._id
+        }
+      };
 
-      const user = new User({ name, email, password });
-
-      user.save((err, user) => {
-        if (err) {
-          console.log('SAVE USER IN ACCOUNT ACTIVATION ERROR', err);
-          return res.status(401).json({
-            error: 'Error saving user in database. Try signup again'
+      jwt.sign(
+        payload,
+        process.env.JWT_SECRET,
+        { expiresIn: '5 days' },
+        (err, token) => {
+          if (err) throw err;
+          res.status(200).json({
+            token,
+            user,
+            msg: 'Signup success! Please login.'
           });
         }
-        return res.json({
-          message: 'Signup success. Please signin.'
-        });
-      });
+      );
     });
-  } else {
-    return res.json({
-      message: 'Something went wrong. Try again.'
-    });
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send('Server error');
   }
 };
 
@@ -154,16 +113,14 @@ const forgotPassword = async (req, res) => {
   const { email } = req.body;
 
   User.findOne({ email }, (err, user) => {
-    if (err || !user) {
+    if(err || !user) {
       return res.status(400).json({
         error: 'User with that email does not exist'
-      });
+      })
     }
 
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_RESET_PASSWORD, {
-      expiresIn: '10m'
-    });
-  });
+    const token = jwt.sign({ _id: user._id}, process.env.JWT_RESET_PASSWORD, {expiresIn: '10m'})
+  })
 };
 
 const resetPassword = async (req, res) => {};
@@ -189,13 +146,12 @@ const currentUser = async (req, res) => {
       });
     }).select('_id name email');
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 };
 
 module.exports = {
   signUp,
-  accountActivation,
   signIn,
   signOut,
   forgotPassword,

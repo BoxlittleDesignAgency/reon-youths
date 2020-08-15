@@ -3,6 +3,7 @@ const express = require('express');
 //import the controllers
 const {
   signUp,
+  accountActivation,
   signIn,
   signOut,
   forgotPassword,
@@ -36,6 +37,11 @@ const router = express.Router();
 // @desc     Signup
 // @access   Public
 router.route('/auth/signup').post(signupValidate, runValidation, signUp);
+
+// @route    post auth/signup
+// @desc     Signup
+// @access   Public
+router.route('/auth/account-activation').post(accountActivation);
 
 // @route    post auth/signin
 // @desc     Signin

@@ -56,14 +56,14 @@ const Register = () => {
 
         const body = JSON.stringify(newUser);
         const res = await axios.post('/api/auth/signup', body, config);
-        
+
         setFormData({
           ...formData,
           name: '',
           email: '',
           password: '',
           password2: '',
-          buttonText: 'Registered'
+          buttonText: 'Submitted'
         });
         setError('');
         toast.success(res.data.msg);
@@ -71,11 +71,7 @@ const Register = () => {
         console.log('SIGNUP ERROR', err.response.data.error);
         setError(err.response.data.error);
         setFormData({ ...formData, buttonText: 'Register' });
-        toast.error(err.response.data.error, {
-          fontSize: '1.625rem',
-          fontWeight: 'bold',
-          autoClose: 10000
-        });
+        toast.error(err.response.data.error);
       }
     }
   };

@@ -7,8 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Posts from './dashboard/components/posts/Posts';
-import Login from './pages/components/auth/Login';
-import Register from './pages/components/auth/Register';
+
 
 import MainLayout from './layout/MainLayout';
 import DashboardLayout from './layout/DashboardLayout';
@@ -26,6 +25,9 @@ import './App.scss';
 
 const lazyImport = (filename) => lazy(() => import(`${filename}`));
 
+const Login = lazyImport('./pages/components/auth/Login');
+const Register = lazyImport('./pages/components/auth/Register');
+
 const Landing = lazyImport('./pages/components/landing/Landing');
 
 const About = lazy(() => import('./pages/components/about/About'));
@@ -35,6 +37,7 @@ const LiveStream = lazy(() =>
 );
 
 const Contact = lazy(() => import('./pages/components/contact/Contact'));
+const Activate = lazy(() => import('./pages/components/auth/Activate'));
 
 const LoadingMessage = () => "I'm loading...";
 
@@ -85,6 +88,12 @@ const App = () => {
               path="/register"
               layout={MainLayout}
               component={Register}
+            />
+            <AppRoute
+              exact
+              path="/auth/activate/:token"
+              layout={MainLayout}
+              component={Activate}
             />
             <AppRoute
               exact

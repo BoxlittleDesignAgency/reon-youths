@@ -52,10 +52,11 @@ const Login = ({ history }) => {
           redirectToReferrer: true,
           buttonText: 'Sent'
         });
-        toast.success(`Hey ${res.data.user.name}, Welcome back!`);
+
         isAuthenticated() && isAuthenticated().role === 'admin'
           ? history.push('/admin/dashboard')
           : history.push('/user/dashboard');
+        toast.success(`Hey ${res.data.user.name}, Welcome back!`);
       });
     } catch (err) {
       console.log('SIGNIN ERROR', err.response.data);
@@ -136,7 +137,10 @@ const Login = ({ history }) => {
         <section id="login-masthead" className="flex in-view">
           <h1 className="title">Login</h1>
           <p>
-            Don't have an account? <Link className="all-links" to="/register">Register </Link>
+            Don't have an account?{' '}
+            <Link className="all-links" to="/register">
+              Register{' '}
+            </Link>
           </p>
         </section>
         <div className="user-login in-view">

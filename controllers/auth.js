@@ -32,7 +32,7 @@ const signUp = (req, res) => {
       to: email,
       subject: `REON Account activation link`,
       html: `
-                <h1>Please use the following link to activate your account</h1>
+                <h1>Please use the following link to activate your REON account</h1>
                 <p>${process.env.CLIENT_URL}/auth/activate/${token}</p>
                 <hr />
                 <p>This email may contain sensitive information</p>

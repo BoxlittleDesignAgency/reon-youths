@@ -6,7 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 import Log from '../../shared/Log';
 
-import './Login.css';
+import './Login.scss';
 
 const Forgot = ({ history }) => {
   const [formData, setFormData] = useState({
@@ -81,8 +81,9 @@ const Forgot = ({ history }) => {
         }}
       >
         <ToastContainer />
-        <section id="login-masthead" className="flex in-view">
-          <h1 className="title">Forgot Password</h1>
+        <section id="login-masthead" className="in-view">
+          <h2 className="h2">Password reset</h2>
+          <p id="forgotMessage">We’ll email you instructions to reset your password.</p>
         </section>
         <div className="user-login in-view">
           {forgotPasswordForm()}

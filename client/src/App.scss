@@ -47,6 +47,7 @@ html {
 
   --primary: #88d5bf;
   --primary-2: #61dafb;
+  --primaryDark: #11afe2;
   --secondary: #5d6bf8;
   --background: #005;
   --third: #e27fcb;
@@ -353,15 +354,6 @@ a:hover {
   top: 0px;
 }
 
-.title {
-  font-family: 'HKGrotesk-Regular';
-  letter-spacing: 2px;
-  margin: 0;
-  font-size: 3.25rem;
-  font-weight: 300;
-  line-height: 2.75rem;
-}
-
 .div-block-6 {
   width: 100%;
   max-width: 1440px;
@@ -633,7 +625,8 @@ form [type='password'] {
   font-size: 2.4rem;
 }
 
-.loginBtn,.registerBtn,
+.loginBtn,
+.registerBtn,
 .reonBtn {
   color: rgba(196, 201, 203, 1);
   color: rgba(255, 255, 255, 1);
@@ -667,7 +660,8 @@ form [type='password'] {
   cursor: pointer;
 }
 
-.loginBtn,.registerBtn,
+.loginBtn,
+.registerBtn,
 .reonBtn {
   position: relative;
   outline: none;
@@ -691,17 +685,20 @@ form [type='password'] {
   transition: background ease 0.25s, box-shadow ease 0.25s;
 }
 
-.loginBtn,.registerBtn,
+.loginBtn,
+.registerBtn,
 .reonBtn {
   margin-top: 50px;
 }
 
-.login-submit-btn button::before,.register-submit-btn button::before,
+.login-submit-btn button::before,
+.register-submit-btn button::before,
 .reonBtn::before {
   transition: width ease 0.25s;
 }
 
-.loginBtn::before, .registerBtn::before {
+.loginBtn::before,
+.registerBtn::before {
   content: '';
   position: absolute;
   top: 0;
@@ -712,11 +709,13 @@ form [type='password'] {
   z-index: -1;
 }
 
-.loginBtn:hover, .registerBtn:hover {
+.loginBtn:hover,
+.registerBtn:hover {
   box-shadow: none;
 }
 
-.loginBtn:hover::before, .registerBtn:hover::before {
+.loginBtn:hover::before,
+.registerBtn:hover::before {
   width: 100%;
 }
 
@@ -785,7 +784,6 @@ form.register {
 .register input[type='password']:hover {
   background: rgba(196, 201, 203, 1);
 }
-
 
 /*Home Page*/
 .home-comp {

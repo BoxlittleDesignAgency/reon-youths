@@ -22,93 +22,107 @@ const slides = [
   }
 ];
 
+const initialState = {
+  fromName: '',
+  fromEmail: '',
+  fromMessage: '',
+  buttonText: 'Send Message'
+};
+
 const Contact = () => {
-  const [autoplay, setAutoplay] = useState(true);
+  const [formData, setFormData] = useState(initialState);
 
-  let slideDelay = 1.5;
-  let slideDuration = 0.3;
+  useEffect(() => {}, []);
 
-  let slidesList = useRef(null);
-
-  let numSlides = slides.length;
-  console.log('number of slides', numSlides);
-
-  let proxy = document.createElement('div');
-  gsap.set(proxy, { x: '+=0' });
-
-  let slideAnimation = gsap.to({}, 0.1, {});
-  let transform;
-  transform = proxy._gsTransform;
-  let slideWidth = 0;
-  let wrapWidth = 0;
-
-  useEffect(() => {
-    animateSlides(-1)
-  }, [gsap]);
-
-  const wrapPartial = (min, max) => {
-    let r = max - min;
-    return function (value) {
-      var v = value - min;
-      return ((r + (v % r)) % r) + min;
-    };
+  const handleChange = (name) => (event) => {
+    event.preventDefault();
+    setFormData({
+      ...formData,
+      [name]: event.target.value,
+      buttonText: 'Send Message'
+    });
   };
 
-  const autoPlay = () => {};
+  const { fromName, fromEmail, fromMessage } = formData;
 
-  let updateProgress = () => {
-    animation.progress(transform.x / wrapWidth);
-  };
+  const submitRequest = async (e) => {
+    e.preventDefault();
 
-  let snapX = (xdir) => {
-    return Math.round(xdir / slideWidth) * slideWidth;
-  };
+    console.log({ fromName, fromEmail, fromMessage });
 
-  let wrap = wrapPartial(-100, (numSlides - 1) * 100);
+    const response = await fetch('/access', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({ fromName, fromEmail, fromMessage })
+    });
 
-  let timer = gsap.delayedCall(slideDelay, autoPlay);
-
-  let animation = gsap.to(slides, 1, {
-    xPercent: '+=' + numSlides.length * 100,
-    ease: 'linear.easeNone',
-    paused: true,
-    repeat: -1,
-    modifiers: {
-      xPercent: wrap
+    const resData = await response.json();
+    if (resData.status === 'success') {
+      alert('Message Sent.');
+      setFormData({
+        ...formData,
+        fromName: '',
+        fromEmail: '',
+        fromMessage: '',
+        buttonText: 'Send Message'
+      });
+    } else if (resData.status === 'fail') {
+      alert('Message failed to send.');
     }
-  });
-
-  const prevSlide = () => {
-    animateSlides(1);
   };
 
-  const nextSlide = () => {
-    animateSlides(-1);
-  };
-
-  const renderSlides = () => {
-    slides.map((item, index) => (
-      <div className="slide" key={index}>
-        <img className="hero-image" src={item.slideImg} />
-        <div className="contact-word">
-          <span>{item.tagLine}</span>
-        </div>
+  const contactForm = () => (
+    <form>
+      <div className="contact-form-field">
+        <label htmlFor="from-name">Full name</label>
+        <input
+          id="from-name"
+          type="text"
+          name="fromName"
+          value={fromName}
+          placeholder="Type here"
+          onChange={handleChange('fromName')}
+          required
+        />
       </div>
-    ));
-  };
-
-  const animateSlides = (direction) => {
-    timer.restart(true);
-    slideAnimation.kill();
-    console.log(transform);
-    //let xDirection = snapX(transform.x + direction * slideWidth);
-
-    // slideAnimation = gsap.to(proxy, slideDuration, {
-    //   x: xDirection,
-    //   onUpdate: updateProgress
-    // });
-  };
-
+      <div className="contact-form-field">
+        <label htmlFor="from-email">Email address</label>
+        <input
+          id="from-email"
+          type="text"
+          value={fromEmail}
+          name="fromEmail"
+          placeholder="Type here"
+          onChange={handleChange('fromEmail')}
+          required
+        />
+      </div>
+      <div className="contact-form-field contact-form-textarea">
+        <label htmlFor="message">
+          The more detail you can give us the better
+        </label>
+        <textarea
+          rows="10"
+          cols="40"
+          id="message"
+          name="fromMessage"
+          value={fromMessage}
+          onChange={handleChange('fromMessage')}
+        ></textarea>
+      </div>
+      <div className="contact-form-field">
+        <button
+          className="cta-btn orange"
+          type="submit"
+          onClick={submitRequest}
+        >
+          Send
+        </button>
+      </div>
+    </form>
+  );
   return (
     <Fragment>
       <div
@@ -117,7 +131,7 @@ const Contact = () => {
       >
         <section id="contact-masthead" className="contact-inner">
           <div className="slides-container full-width">
-            <div ref={(el) => (slidesList = el)} className="slides-inner">
+            <div className="slides-inner">
               <div className="slide hero-image1">
                 <div className="contact-word">
                   <span>Only God Matters</span>
@@ -130,10 +144,10 @@ const Contact = () => {
               </div>
             </div>
             <div className="controls">
-              <button type="button" className="arrows prev" onClick={prevSlide}>
+              <button type="button" className="arrows prev">
                 <img src={leftArrow} alt="left arrow" />
               </button>
-              <button type="button" className="arrows next" onClick={nextSlide}>
+              <button type="button" className="arrows next">
                 <img src={rightArrow} alt="left arrow" />
               </button>
             </div>
@@ -157,44 +171,7 @@ const Contact = () => {
               style={{ alignItems: 'flex-end' }}
             >
               <div className="contact-form-section">
-                <div className="contact-form-inner">
-                  <div className="contact-form-field">
-                    <label htmlFor="from-name">Full name</label>
-                    <input
-                      id="from-name"
-                      type="text"
-                      name="fromName"
-                      placeholder="Type here"
-                      required
-                    />
-                  </div>
-                  <div className="contact-form-field">
-                    <label htmlFor="from-email">Email address</label>
-                    <input
-                      id="from-email"
-                      type="text"
-                      name="fromEmail"
-                      placeholder="Type here"
-                      required
-                    />
-                  </div>
-                  <div className="contact-form-field contact-form-textarea">
-                    <label htmlFor="message">
-                      The more detail you can give us the better
-                    </label>
-                    <textarea
-                      rows="10"
-                      cols="40"
-                      id="message"
-                      name="message"
-                    ></textarea>
-                  </div>
-                  <div className="contact-form-field">
-                    <button className="cta-btn orange" type="submit">
-                      Send
-                    </button>
-                  </div>
-                </div>
+                <div className="contact-form-inner">{contactForm()}</div>
               </div>
             </div>
           </div>

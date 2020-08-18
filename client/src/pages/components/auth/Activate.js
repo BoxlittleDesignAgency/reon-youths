@@ -9,7 +9,7 @@ import { authenticate, isAuthenticated } from './helpers';
 
 import Log from '../../shared/Log';
 
-import './Login.css';
+import './Login.scss';
 
 const Activate = ({ history, match }) => {
   const [values, setValues] = useState({

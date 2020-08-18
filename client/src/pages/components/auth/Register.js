@@ -8,7 +8,7 @@ import { isAuthenticated } from './helpers';
 
 import Log from '../../shared/Log';
 
-import './Register.css';
+import './Register.scss';
 
 const Register = () => {
   const [error, setError] = useState('');
@@ -166,9 +166,11 @@ const Register = () => {
           display: 'block'
         }}
       >
-        <section id="register-masthead" className="flex in-view">
-          <h1 className="title">Register</h1>
-          <p>Create an account.</p>
+        <section id="login-masthead" className="in-view">
+          <h2 className="h2">Hey, you! Join us now.</h2>
+          <p>
+            Create an account.
+          </p>
         </section>
         <div className="user-register in-view">
           <ToastContainer />

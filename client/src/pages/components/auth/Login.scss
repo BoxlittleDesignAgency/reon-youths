@@ -1,0 +1,62 @@
+#login-masthead {
+  padding-top: 10rem;
+  padding-bottom: 4rem;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+.in-view {
+}
+
+.title {
+  font-family: 'HKGrotesk-Regular';
+}
+
+h2,
+.h2 {
+  font-family: 'SerifBold', 'Georgia Bold', 'Times New Roman Bold', serif;
+  font-size: 5.2rem;
+  line-height: 6rem;
+  letter-spacing: -0.12rem;
+  color: #222;
+}
+
+#login-mathead h2 {
+}
+
+#login-masthead p {
+  margin-left: 2rem;
+  color: var(--primaryDark);
+  font-size: 1.625rem;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.1rem;
+}
+
+#login-masthead #forgotMessage {
+  margin: 12px auto 0;
+  max-width: 680px;
+}
+
+.password-reset a {
+  cursor: pointer;
+  color: var(--primaryDark);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.mini-text {
+  font-family: 'GTAmericaLight', 'Helvetica Lighter', 'Arial', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.all-links {
+  color: var(--site-secondary);
+  font-weight: 400;
+}
+.user-login {
+  margin-top: 34px;
+}

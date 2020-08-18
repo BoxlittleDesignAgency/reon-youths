@@ -8,7 +8,7 @@ import { authenticate, isAuthenticated } from './helpers';
 
 import Log from '../../shared/Log';
 
-import './Login.css';
+import './Login.scss';
 
 const Login = ({ history }) => {
   const [formData, setFormData] = useState({
@@ -92,9 +92,9 @@ const Login = ({ history }) => {
             />
           </div>
         </div>
-        <h4 className="password-reset">
-          <Link to="/auth/password/forgot">Lost password?</Link>
-        </h4>
+        <div className="password-reset">
+          <Link className="mini-text" to="/auth/password/forgot">Forgot password?</Link>
+        </div>
       </fieldset>
       <fieldset className="login-submit-btn">
         <div className="form-row">
@@ -134,12 +134,12 @@ const Login = ({ history }) => {
       >
         <ToastContainer />
         {isAuthenticated() ? <Redirect to="/dashboard" /> : null}
-        <section id="login-masthead" className="flex in-view">
-          <h1 className="title">Login</h1>
+        <section id="login-masthead" className="in-view">
+          <h2 className="h2">Hey, you! Login.</h2>
           <p>
-            Don't have an account?{' '}
+            New around here?{' '}
             <Link className="all-links" to="/register">
-              Register{' '}
+              Join Us
             </Link>
           </p>
         </section>

@@ -7,7 +7,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 import Log from '../../shared/Log';
 
-import './Login.css';
+import './Login.scss';
 
 const Reset = ({ match }) => {
   const [formData, setFormData] = useState({

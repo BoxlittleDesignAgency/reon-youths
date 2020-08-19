@@ -50,7 +50,7 @@ const Contact = () => {
 
     console.log({ fromName, fromEmail, fromMessage });
 
-    const response = await fetch('/access', {
+    const response = await fetch('/send/mail', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -157,23 +157,44 @@ const Contact = () => {
           className="full-width"
           style={{ position: 'relative', display: 'block', marginTop: '50px' }}
         >
-          <div className="container flex-based" style={{}}>
-            <div className="cnt-column cnt-half-one">
-              <div className="cnt-block">Contact us</div>
-
+          <div className="container visitor">
+            <div class="headerBlock">
+              <h2>We pick five. You pick your fave.</h2>
+            </div>
+            <div className="contact-row">
+              <div className="image">
+                <picture>
+                  <source
+                    srcset="//static.bookofthemonth.com/landing/hiw/hiw1.webp"
+                    type="image/webp"
+                    class="-heroImage"
+                  />
+                  <source
+                    srcset="//static.bookofthemonth.com/landing/hiw/hiw1.jpg"
+                    class="-heroImage"
+                  />
+                  <img
+                    src="//static.bookofthemonth.com/landing/hiw/hiw1.jpg"
+                    alt="Step 1: Pick your Book"
+                  />
+                </picture>
+              </div>
+              <div className="content">
+            
+                <div
+                  className="cnt-column">
+                  <div className="contact-form-section">
+                    <div className="contact-form-inner">{contactForm()}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <div className="cnt-column cnt-half-one">
               <img
                 src="//cdn.shopify.com/s/files/1/1211/5920/t/45/assets/about_section_4_image_2.jpg?v=5122455654466978303"
                 alt="Hobes"
               ></img>
-            </div>
-            <div
-              className="cnt-column cnt-half-two"
-              style={{ alignItems: 'flex-end' }}
-            >
-              <div className="contact-form-section">
-                <div className="contact-form-inner">{contactForm()}</div>
-              </div>
-            </div>
+            </div> */}
           </div>
         </section>
 

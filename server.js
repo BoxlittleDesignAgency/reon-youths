@@ -35,6 +35,7 @@ const userRoutes = require('./routes/api/user');
 const postRoutes = require('./routes/api/post');
 const profileRoutes = require('./routes/api/profile');
 const siteRoutes = require('./routes/api/site');
+const mailRoutes = require('./routes/api/mail');
 
 // app.get('/ping', (req, res) => {
 //   res.send('ping pong');
@@ -73,6 +74,7 @@ app.use('/api', userRoutes);
 app.use('/api', postRoutes);
 app.use('/api', profileRoutes);
 app.use('/api', siteRoutes);
+// app.use('/api', mailRoutes);
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {

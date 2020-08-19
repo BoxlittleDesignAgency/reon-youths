@@ -70,8 +70,8 @@ const Activate = ({ history, match }) => {
         }}
       >
         <ToastContainer />
-        <section id="login-masthead" className="flex in-view">
-          <h1 className="title">Activate your Account</h1>
+        <section id="login-masthead" className="in-view">
+          <h2 className="h2">Activate your Account</h2>
         </section>
         <div className="user-login in-view">
         {activationLink()}

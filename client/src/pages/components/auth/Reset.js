@@ -75,10 +75,13 @@ const Reset = ({ match }) => {
       <fieldset className="login-submit-btn">
         <div className="form-row">
           <div className="form-field">
-            <h3>Hey {name}, Type your new password</h3>
-            <button className="loginBtn" type="submit" onClick={clickSubmit}>
+          <div id="login-masthead" className="in-view">
+            <h2 className="h2">Hey <span className="nameEmp">{name}</span>, type your new password</h2>
+          </div>
+            
+          <button className="loginBtn" type="submit" onClick={clickSubmit}>
               {buttonText}
-            </button>
+          </button>
           </div>
         </div>
       </fieldset>

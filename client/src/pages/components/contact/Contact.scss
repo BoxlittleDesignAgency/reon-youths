@@ -276,6 +276,46 @@
   padding: 4rem;
 }
 
+.visitor {
+  width: 100%;
+  padding: 40px 0;
+  z-index: 2;
+  position: relative;
+  text-align: center;
+}
+
+.visitor .headerBlock h2 {
+  font-family: 'SerifBold', 'Georgia Bold', 'Times New Roman Bold', serif;
+  font-size: 5.2rem;
+  line-height: 6rem;
+  letter-spacing: -0.12rem;
+  color: #222;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  margin-top: 45px;
+}
+
+.contact-row .image {
+  width: 58%;
+
+  img {
+    width: 100%;
+  }
+}
+
+.contact-row .content {
+  text-align: center;
+  width: 41%;
+  transition: opacity 800ms;
+}
+
+.contact-row .content h4 {
+  margin: 20px 0 12px;
+}
+
 .contact-form-section {
   margin: 0 auto 40px;
   display: flex;
